@@ -1,0 +1,47 @@
+# 의존성 폴더
+node_modules/
+__pycache__/
+*.pyc
+
+# Next.js 빌드 결과물
+.next/
+out/
+
+# 환경 변수 파일 (절대 커밋하지 않는다)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE 설정
+.vscode/
+.idea/
+
+# OS 파일
+.DS_Store
+Thumbs.db
+
+# Python 가상환경
+venv/
+.venv/
+
+# 디버그 로그
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Vercel
+.vercel
+
+# Claude 작업 파일
+.claude/
+
+# 불필요한 파일
+_ul
+nul
+image/
+
+# TypeScript 캐시
+*.tsbuildinfo
+next-env.d.ts

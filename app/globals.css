@@ -1,0 +1,60 @@
+/* Google Fonts 임포트 - 본문용 Inter, 숫자용 Roboto Mono */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap');
+
+/* Tailwind CSS 기본 레이어 */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 디자인 시스템 CSS 변수 (docs/05_DesignSystem.md 참조) */
+:root {
+  /* 색상 */
+  --color-primary: #3B82F6;
+  --color-secondary: #8B5CF6;
+  --color-surface: #1F2937;
+  --color-background: #111827;
+  --color-text-primary: #F9FAFB;
+  --color-text-secondary: #9CA3AF;
+  --color-border: #374151;
+  --color-success: #10B981;
+  --color-danger: #EF4444;
+  --color-warning: #F59E0B;
+
+  /* 타이포그래피 */
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'Roboto Mono', monospace;
+
+  /* 간격 */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+}
+
+/* 전역 기본 스타일 - 다크 모드 기반 */
+body {
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+}
+
+/* 스크롤바 스타일 (다크 모드에 맞춤) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4B5563;
+}
