@@ -6,6 +6,7 @@ Skill 4-2: 만료 보고서 자동 삭제는 Supabase Function(pg_cron)에서 �
 
 참조: docs/08_AgentSkillDesign.md Agent 4 섹션
 """
+import asyncio
 import logging
 from datetime import datetime
 
@@ -96,15 +97,15 @@ def refresh_market_data():
         now = datetime.now()
         logger.info(f"[{now.strftime('%H:%M')}] 장중 데이터 갱신 시작")
 
-        # 거래량 기준 상위 테마 조회
-        themes = fetch_themes_by_volume()
+        # 거래량 기준 상위 테마 조회 (async 함수이므로 asyncio.run으로 실행)
+        themes = asyncio.run(fetch_themes_by_volume())
         logger.info(f"테마 {len(themes)}개 갱신 완료")
 
         # 각 테마별 종목 데이터 갱신
         for theme in themes[:5]:
             theme_code = theme.get("code", "")
             if theme_code:
-                fetch_stocks_by_theme(theme_code)
+                asyncio.run(fetch_stocks_by_theme(theme_code))
                 logger.info(f"테마 '{theme.get('name', '')}' 종목 갱신 완료")
 
         logger.info("장중 데이터 갱신 완료")
@@ -124,9 +125,9 @@ def refresh_final_data():
     try:
         logger.info("장마감 후 최종 데이터 갱신 시작")
 
-        # 거래량 + 급등주 기준 모두 갱신
-        volume_themes = fetch_themes_by_volume()
-        surge_themes = fetch_themes_by_surge()
+        # 거래량 + 급등주 기준 모두 갱신 (async 함수이므로 asyncio.run으로 실행)
+        volume_themes = asyncio.run(fetch_themes_by_volume())
+        surge_themes = asyncio.run(fetch_themes_by_surge())
 
         # 중복 제거를 위해 코드 기준으로 합치기
         all_theme_codes = set()
@@ -142,7 +143,7 @@ def refresh_final_data():
         for theme in all_themes:
             theme_code = theme.get("code", "")
             if theme_code:
-                fetch_stocks_by_theme(theme_code)
+                asyncio.run(fetch_stocks_by_theme(theme_code))
 
         logger.info(f"장마감 후 최종 데이터 갱신 완료 (테마 {len(all_themes)}개)")
 
