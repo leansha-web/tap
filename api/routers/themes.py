@@ -8,7 +8,7 @@
 from fastapi import APIRouter, HTTPException, Query
 import logging
 
-from api.services.theme_service import (
+from services.theme_service import (
     fetch_themes_by_volume,
     fetch_themes_by_surge,
     search_themes as search_themes_service,

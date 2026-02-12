@@ -8,7 +8,7 @@
 from fastapi import APIRouter, HTTPException, Path, Query
 import logging
 
-from api.services.stock_service import fetch_stocks_by_theme, fetch_stock_detail
+from services.stock_service import fetch_stocks_by_theme, fetch_stock_detail
 
 logger = logging.getLogger(__name__)
 

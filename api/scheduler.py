@@ -12,8 +12,8 @@ from datetime import datetime
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.triggers.cron import CronTrigger
 
-from api.services.theme_service import fetch_themes_by_volume, fetch_themes_by_surge
-from api.services.stock_service import fetch_stocks_by_theme
+from services.theme_service import fetch_themes_by_volume, fetch_themes_by_surge
+from services.stock_service import fetch_stocks_by_theme
 
 # 로깅 설정
 logger = logging.getLogger(__name__)

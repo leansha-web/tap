@@ -13,9 +13,9 @@ from dotenv import load_dotenv
 
 from contextlib import asynccontextmanager
 
-from api.routers import themes, stocks, news
-from api.middleware.error_handler import global_exception_handler
-from api.scheduler import start_scheduler, stop_scheduler
+from routers import themes, stocks, news
+from middleware.error_handler import global_exception_handler
+from scheduler import start_scheduler, stop_scheduler
 
 # .env 파일에서 환경 변수 로드
 load_dotenv()

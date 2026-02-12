@@ -10,7 +10,7 @@ import logging
 from datetime import datetime, timedelta
 
 from pykrx import stock as pykrx_stock
-from api.services.news_service import fetch_stock_news
+from services.news_service import fetch_stock_news
 
 logger = logging.getLogger(__name__)
 
