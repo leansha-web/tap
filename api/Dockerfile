@@ -5,9 +5,9 @@ FROM python:3.12-slim
 
 WORKDIR /app
 
-# 1단계: pip 업그레이드 + setuptools 강제 설치 + 설치 검증
+# 1단계: pip 업그레이드 + setuptools 70.x 설치 (82.x에서는 pkg_resources 제거됨)
 RUN pip install --upgrade pip && \
-    pip install --force-reinstall setuptools && \
+    pip install "setuptools<71" && \
     python -c "import pkg_resources; print('pkg_resources OK')"
 
 # 2단계: 나머지 의존성 설치 + pykrx import 검증
